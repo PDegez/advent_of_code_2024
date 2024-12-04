@@ -6,7 +6,6 @@ Created on Mon Dec  2 10:35:39 2024
 @author: pauline
 """
 
-
 def extract_input(path:str)->list[list]:
     """récupérer les rapports depuis un fichier texte
     vers une liste de liste"""
