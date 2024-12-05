@@ -34,9 +34,7 @@ def find_crossmas(puzzle:list)->int:
             c4 = cadre[2][2]
             cond1 = sorted([c1, c2, c3, c4]) == ["M", "M", "S", "S"]
             cond2 = c1 != c4
-            if cond1 and cond2:
-                return True
-            return False
+            return cond1 and cond2
         
     
     cropped_puzzle = puzzle[:-2]
@@ -98,19 +96,15 @@ def find_xmas(puzzle:list):
         l_new_line = len(puzzle) + len(puzzle[0]) -1
         
         nb = 0
-        new_puzzle1 = [] 
+        new_puzzle1 = []
+        new_puzzle2 = []
         for id_l, line in enumerate(puzzle) :
             b = "."*id_l
             a = "."*(l_new_line-len(line)-id_l)
-            new_line = b + line + a
-            new_puzzle1.append(new_line)
-        
-        new_puzzle2 = []
-        for id_l, line in enumerate(puzzle) :
-            b = "."*(l_new_line-len(line)-id_l)
-            a = "."*id_l
-            new_line = b + line + a
-            new_puzzle2.append(new_line)
+            new_line1 = b + line + a
+            new_line2 = a + line + b
+            new_puzzle1.append(new_line1)
+            new_puzzle2.append(new_line2)
         
         for puzzle_v in [new_puzzle1, new_puzzle2]:
             nb += find_vertical(puzzle_v, patterns)
